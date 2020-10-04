@@ -1,0 +1,68 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  - |
+    apiVersion: kubeadm.k8s.io/v1beta2
+    kind: ClusterConfiguration
+    metadata:
+      name: config
+    apiServer:
+      extraArgs:
+        "service-account-issuer": "kubernetes.default.svc"
+        "service-account-signing-key-file": "/etc/kubernetes/pki/sa.key"
+        "service-account-api-audiences": "api,istio-ca"
+  # extraMounts:
+  # - hostPath: /var/run/docker.sock
+  #   containerPath: /var/run/docker.sock
+  extraPortMappings:  
+  - containerPort: 31380
+    hostPort: 31380
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 31390
+    hostPort: 31390
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 80
+    hostPort: 31580
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 31543
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 31577
+    hostPort: 31577
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 31400
+    hostPort: 31400
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 30363
+    hostPort: 30363
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 30826
+    hostPort: 30826
+    listenAddress: "127.0.0.1"
+    protocol: TCP       
+  - containerPort: 31873
+    hostPort: 31873
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 32428
+    hostPort: 32428
+    listenAddress: "127.0.0.1"
+    protocol: TCP
+  - containerPort: 30205
+    hostPort: 30205
+    listenAddress: "127.0.0.1"
+    protocol: TCP

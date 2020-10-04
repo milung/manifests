@@ -6,4 +6,6 @@ resources:
 - cache-deployer-deployment.yaml
 images:
 - name: gcr.io/ml-pipeline/cache-deployer
-  newTag: 1.0.0
+# with patch https://github.com/kubeflow/pipelines/commit/58584e1d1f64c1e1658cec92f82dd28206797fb2
+  newName: milung/cache-deployer
+  newTag: v1.0.0-patch
