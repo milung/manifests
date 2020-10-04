@@ -88,5 +88,5 @@ spec:
     name: spartakus
   repos:
   - name: manifests
-    uri: https://github.com/milung/manifests/archive/v1.1-branch-kind_on_wsl2.tar.gz
+    uri: https://github.com/milung/manifests/archive/v1.1-wsl2.tar.gz
   version: v1.1-branch
