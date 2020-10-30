@@ -97,6 +97,18 @@ spec:
     tls:
       mode: ISTIO_MUTUAL
 ---
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: mysql
+  namespace: kubeflow
+spec:
+  targets:
+  - name: mysql
+  peers:
+  - mtls:
+      mode: STRICT
+---
 apiVersion: "rbac.istio.io/v1alpha1"
 kind: ServiceRole
 metadata:

@@ -90,7 +90,7 @@ class Controller(BaseHTTPRequestHandler):
                                 "app": "ml-pipeline-visualizationserver"
                             },
                             "annotations": disable_istio_sidecar and {
-                                "sidecar.istio.io/inject": "false"
+                                
                             } or {},
                         },
                         "spec": {
@@ -203,7 +203,7 @@ class Controller(BaseHTTPRequestHandler):
                                 "app": "ml-pipeline-ui-artifact"
                             },
                             "annotations": disable_istio_sidecar and {
-                                "sidecar.istio.io/inject": "false"
+                                
                             } or {},
                         },
                         "spec": {

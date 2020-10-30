@@ -12,3 +12,28 @@ spec:
       name: dbapi
   selector:
     component: db
+---
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: metadata-db
+spec:
+  targets:
+  - name: metadata-db.kubeflow.svc.cluster.local
+  peers:
+  - mtls:
+      mode: STRICT
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  labels:
+    app.kubernetes.io/component: metadata
+    app.kubernetes.io/name: kubeflow-pipelines
+  name: metadata-db
+  namespace: kubeflow  
+spec:
+  host: metadata-db
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

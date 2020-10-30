@@ -13,7 +13,7 @@ spec:
       labels:
         app: ml-pipeline-ui
       annotations:
-        sidecar.istio.io/inject: "false"
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
       - name: ml-pipeline-ui
@@ -22,6 +22,8 @@ spec:
         env:
         - name: ALLOW_CUSTOM_VISUALIZATIONS
           value: "true"
+        - name: DISABLE_GKE_METADATA
+          value: 'true'
         ports:
         - containerPort: 3000
       serviceAccountName: ml-pipeline-ui
