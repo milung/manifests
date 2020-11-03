@@ -19,7 +19,7 @@ metadata:
   name: metadata-db
 spec:
   targets:
-  - name: metadata-db.kubeflow.svc.cluster.local
+  - name: metadata-db
   peers:
   - mtls:
       mode: STRICT
